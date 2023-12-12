@@ -1,13 +1,15 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_from_directory
 import os
 from werkzeug.utils import secure_filename
 from util import load_models, model_operations
 
-UPLOAD_FOLDER = 'static/uploads'
+UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'} #heic
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -22,16 +24,21 @@ client = load_models.load_gpt3()
 def main():
     return render_template('index.html')
 
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory('uploads', filename)
+
 @app.route('/predict', methods=['POST'])
 def predict():
+    print(request)
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'}), 400
-
     file = request.files['file']
 
     if file.filename == '':
         return jsonify({'error': 'No selected file'}), 400
     
+    print("file exists")
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
@@ -54,7 +61,7 @@ def predict():
         response_content = model_operations.generate_dog_text(client, emotion, context)
         
         #Return generated response and path to uploaded image to display
-        return jsonify({'prediction': str(response_content), 'file_path': file_path})
+        return jsonify({'prediction': str(response_content), 'filename': filename})
 
 if __name__ == '__main__':
     app.run(debug=True)

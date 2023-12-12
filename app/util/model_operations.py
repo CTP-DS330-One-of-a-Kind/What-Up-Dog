@@ -47,7 +47,7 @@ def generate_dog_text(client, emotion, context):
         messages=[
             {"role": "system", "content": final_string},
             {"role": "user", "content": "Why do you think the dog in the picture is experiencing the emotion we have labeled it with and sent to you?"},
-            {"role": "user", "content": "In 1 sentence as if you were a dog: explain why you would be feeling those emotions."}
+            {"role": "user", "content": "In 1 sentence as if you were a dog: express this explain why you would be feeling those emotions in the first person, as if you're experiencing it. Do not say 'as a dog...'"}
         ] 
     )
     # Check if 'choices' exists in the response and it has at least one element
