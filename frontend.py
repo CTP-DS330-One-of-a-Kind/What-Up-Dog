@@ -22,10 +22,8 @@ def vit_to_string(list_obj):
 
 #precheck function see if dog is real or not
 def precheck(streeng):
-  if streeng.find('dog') != -1 or streeng.find('dogs') != -1 or streeng.find('puppy') != -1 or streeng.find('puppies') != -1:
-    return True
-  else:
-    return False
+  streeng = streeng.lower()
+  return streeng.find('dog') != -1 or streeng.find('pupp') != -1 
 
 # Load dog emotion classifier model
 model_path = 'model.pkl'
