@@ -1,10 +1,4 @@
 from flask import Flask, render_template, request, jsonify
-from fastai.vision.all import load_learner, PILImage
-import pathlib
-from openai import OpenAI
-import tensorflow as tf
-from transformers import pipeline
-import numpy as np
 import os
 from werkzeug.utils import secure_filename
 from util import load_models, model_operations
@@ -47,20 +41,14 @@ def predict():
 
         context = model_operations.get_context(img_to_txt, img)
 
-        predicted_result = model_operations.predict_emotion(model, img)
-        
         if not model_operations.dog_precheck(context):
             not_a_dog = "THAT'S NOT A DOG! Or our model didn't detect a dog, in which case we profusely apologize :("
             return jsonify({'prediction': not_a_dog, 'file_path': file_path})
     
-        emotion = predicted_result
-    
-        response_content = model_operations.generate_dog_text(client, emotion, context)
+        emotion = model_operations.predict_emotion(model, img)
         
-        print(type(model))
-        print(type(img_to_txt))
-        print(type(client)) 
-        print(response_content)
+        response_content = model_operations.generate_dog_text(client, emotion, context)
+            
         return jsonify({'prediction': str(response_content), 'file_path': file_path})
 
 if __name__ == '__main__':
