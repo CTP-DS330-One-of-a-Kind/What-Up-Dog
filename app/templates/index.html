@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Image for Prediction</title>
+</head>
+<body>
+    <h1>Upload Image</h1>
+    <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <input type="button" value="Upload" onclick="uploadImage()">
+    </form>
+    <div id="prediction-result"></div>
+    <img id="uploaded-image" src="" alt="Uploaded Image" style="display:none;">
+
+    <script>
+        function uploadImage() {
+            var formData = new FormData(document.getElementById('upload-form'));
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('prediction-result').innerText = 'Prediction: ' + data.prediction;
+                if (data.file_path) {
+                    var img = document.getElementById('uploaded-image');
+                    img.src = data.file_path;
+                    img.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
