@@ -8,13 +8,7 @@ from fastai.vision.all import *
 from transformers import pipeline, GPT2LMHeadModel, GPT2Tokenizer
 from openai import OpenAI
 import os
-<<<<<<< HEAD
 import pathlib
-=======
-import modal 
->>>>>>> main
-
-#api boot
 client = OpenAI(
     api_key=os.environ.get(st.secrets["api_key"])
 )
@@ -26,10 +20,8 @@ def vit_to_string(list_obj):
 
 #precheck function see if dog is real or not
 def precheck(streeng):
-  if streeng.find('dog') != -1 or streeng.find('dogs') != -1 or streeng.find('puppy') != -1 or streeng.find('puppies') != -1:
-    return True
-  else:
-    return False
+  streeng = streeng.lower()
+  return streeng.find('dog') != -1 or streeng.find('pupp') != -1 
 
 # Load dog emotion classifier model
 model_path = 'model.pkl'
