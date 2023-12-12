@@ -25,11 +25,11 @@ def allowed_file(filename):
 #print(model_path)
 model_path = pathlib.Path('./model/model.pkl')
 posix_backup = pathlib.PosixPath
-# try:
+try:
 #     pathlib.PosixPath = pathlib.WindowsPath
-#     model = load_learner(model_path)
-# finally:
-#     pathlib.PosixPath = posix_backup
+     model = load_learner(model_path)
+finally:
+     pathlib.PosixPath = posix_backup
 
 api = open("gpt_api.txt")
 os.environ["OPENAI_API_KEY"]= api.read()

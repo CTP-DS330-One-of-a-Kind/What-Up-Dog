@@ -1,4 +1,47 @@
 /* Styles for the outer container */
+
+table {
+  width: 110%; /* Adjust the width of the table as needed */
+  border-collapse: collapse;
+  margin: 20px auto;
+  
+  
+}
+
+table, th, td {
+  
+}
+
+th, td {
+  padding: 20px;
+  text-align: left;
+  font-size: 20px; /* Adjust the font size */
+  line-height: 1.4;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+
+/*img {
+  background-size: 500px 300px; 
+  width: 800px;
+  height: 450px;
+  padding-left:600px;
+  background-repeat:no-repeat;
+}*/
+
+
+}
+body {
+  width: 800px;
+  height: 300px;
+  margin-left: 100px;
+  padding-left: 200px;
+  padding-bottom: 50px;
+}
 .border {
     border: 1px solid #e5e7eb;
   }
@@ -13,7 +56,7 @@
   }
   
   .max-w-xl {
-    max-width: 36rem; /* Adjust max-width as needed */
+    max-width: 300rem; /* Adjust max-width as needed */
   }
   
   .mx-auto {
@@ -22,7 +65,7 @@
   }
   
   .my-12 {
-    margin-top: 3rem;
+    margin-top: 7rem;
     margin-bottom: 3rem;
   }
   
@@ -31,7 +74,7 @@
   }
   
   .bg-white {
-    background-color: #ffffff; /* Adjust background color as needed */
+    background-color: #f9f9f9; /* Adjust background color as needed */
   }
   
   .rounded-xl {
@@ -141,11 +184,11 @@
   }
   
   .hover\:bg-blue-700:hover {
-    background-color: #1d4ed8; /* Adjust color as needed */
+    background-color: #b0bfe8; /* Adjust color as needed */
   }
   
   .text-white {
-    color: #ffffff; /* Adjust color as needed */
+    color: #050101; /* Adjust color as needed */
   }
   
   .font-bold {

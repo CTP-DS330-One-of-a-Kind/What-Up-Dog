@@ -2,10 +2,30 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href = "{{ url_for('static', filename='index.css') }}">
-    <title>Upload Image for Prediction</title>
+    <title>What up Dog!</title>
 </head>
+
 <body>
     <body style="background-color:	rgba(242, 228, 229, 0.868);"></body>
+    <h1><strong>What up Dog!</strong></h1>
+
+    <table>
+      
+      <tr>
+          <td>
+              <h2></h2>
+              <p>Have you ever thought about what goes their mind? we love our dog and are curious about their thoughts.
+                So we came together to turn that wonder into a reality!
+
+              </p>
+          </td>
+          <td><img src="{{ url_for('static', filename='dogwithball.jpg') }}" alt="Description of the image"></td>
+      </tr>
+  </table>
+
+
+    
+    
     
     <!-- <h1>Upload Image</h1>
     <form id="upload-form" enctype="multipart/form-data">
@@ -21,6 +41,7 @@
 >
   <div class="flex flex-col space-y-1_5 p-6">
     <h1 class="tracking-tight text-2xl font-bold">Let's guess what our dog thinking! &#128054;</h1>
+  
     <p class="text-sm text-gray-500 dark:text-gray-400">
       Please provide the images of your dog for analysis.
     </p>
