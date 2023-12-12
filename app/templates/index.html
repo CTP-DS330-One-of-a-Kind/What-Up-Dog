@@ -1,16 +1,88 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Upload Image for Prediction</title>
+    <link rel="stylesheet" type="text/css" href = "{{ url_for('static', filename='index.css') }}">
+    <title>What up Dog!</title>
 </head>
+
 <body>
-    <h1>Upload Image</h1>
+    <body style="background-color:	rgba(242, 228, 229, 0.868);"></body>
+    <h1><strong>What up Dog!</strong></h1>
+
+    <table>
+      
+      <tr>
+          <td>
+              <h2></h2>
+              <p>Have you ever thought about what goes their mind? we love our dog and are curious about their thoughts.
+                So we came together to turn that wonder into a reality!
+
+              </p>
+          </td>
+          <td><img src="{{ url_for('static', filename='dogwithball.jpg') }}" alt="Description of the image"></td>
+      </tr>
+  </table>
+
+
+    
+    
+    
+    <!-- <h1>Upload Image</h1>
     <form id="upload-form" enctype="multipart/form-data">
         <input type="file" name="file" required>
         <input type="button" value="Upload" onclick="uploadImage()">
     </form>
     <div id="prediction-result"></div>
-    <img id="uploaded-image" src="" alt="Uploaded Image" style="display:none;">
+    <img id="uploaded-image" src="" alt="Uploaded Image" style="display:none;"> -->
+
+    <div
+  class="border text-card-foreground max-w-xl mx-auto my-12 p-6 bg-white rounded-xl shadow-md space-y-6"
+  data-v0-t="card"
+>
+  <div class="flex flex-col space-y-1_5 p-6">
+    <h1 class="tracking-tight text-2xl font-bold">Let's guess what our dog thinking! &#128054;</h1>
+  
+    <p class="text-sm text-gray-500 dark:text-gray-400">
+      Please provide the images of your dog for analysis.
+    </p>
+  </div>
+  <div class="p-6">
+    <form class="space-y-6">
+      <div class="space-y-2">
+        <label
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          for="dog-name"
+          >Dog's Name</label
+        ><input
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          id="dog-name"
+          placeholder="e.g., Rover"
+          required=""
+        />
+      </div>
+      
+     
+      <div class="grid w-full max-w-sm items-center gap-1.5">
+        <label
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          for="dog-picture"
+          >Upload Dog Picture</label
+        ><input
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          id="dog-picture"
+          required=""
+          type="file"
+        />
+      </div>
+      <button
+        class="inline-flex items-center justify-center text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        type="submit"
+      >
+        Submit for Analysis
+      </button>
+    </form>
+  </div>
+</div>
 
     <script>
         function uploadImage() {
