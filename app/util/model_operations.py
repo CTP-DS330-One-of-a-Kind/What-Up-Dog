@@ -1,9 +1,15 @@
+from fastai.vision.all import PILImage
+
 '''
 <class 'fastai.learner.Learner'>
 <class 'transformers.pipelines.image_to_text.ImageToTextPipeline'>
 <class 'openai.OpenAI'>
 '''
 
+def preprocess_image(file):
+    img = PILImage.create(file)
+    img.resize((288,288))
+    return img
 
 def predict_emotion(model, img):
     # Make a prediction
@@ -17,6 +23,10 @@ def get_context(model, img):
     string_result = ''.join(map(str,result))
     string_result = string_result[19:]
     return string_result
+
+def dog_precheck(img_to_text_result):
+    result = img_to_text_result.lower()
+    return result.find('dog') != -1 or result.find('pupp') != -1 
 
 def generate_dog_text(client, emotion, context):
     
