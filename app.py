@@ -30,7 +30,6 @@ def uploaded_file(filename):
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    print(request)
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'}), 400
     file = request.files['file']
@@ -38,7 +37,6 @@ def predict():
     if file.filename == '':
         return jsonify({'error': 'No selected file'}), 400
     
-    print("file exists")
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
@@ -64,4 +62,4 @@ def predict():
         return jsonify({'prediction': str(response_content), 'filename': filename})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
