@@ -266,3 +266,7 @@ body {
     text-decoration-thickness: 3px;
   }
   
+  #flowchart{
+    width: 70rem;
+    height: 25rem;
+  }

@@ -38,7 +38,7 @@ def load_gpt3():
     """
     Connects to OpenAI's API with an API key stored in a gpt_api.txt file
     """
-    api = open("gpt_api.txt")
+    api = open("app/gpt_api.txt")
     os.environ["OPENAI_API_KEY"]= api.read()
     client = OpenAI()
     return client
